@@ -1,0 +1,115 @@
+import os
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QWidget, QComboBox
+from PyQt5.QtGui import QPixmap, QImageReader
+
+class CharacterDesigner(QMainWindow):
+    def __init__(self):
+        super(CharacterDesigner, self).__init__()
+
+        self.setWindowTitle("Character Designer")
+        self.setFixedSize(800, 600)
+
+        layout = QVBoxLayout()
+
+        # Image label
+        self.image_label = QLabel(self)
+        layout.addWidget(self.image_label)
+
+        # Attributes
+        self.attributes = [
+            "FrontHair",
+            "Eye-Iris",
+            "Eye-White",
+            "Face",
+            "Nose",
+            "Mouth",
+            "Ears",
+            "Brows",
+            "Hip-Torso",
+            "Arms",
+            "Forearms",
+            "Hands",
+            "Upper-Leg",
+            "Lower-Leg",
+            "Feet",
+            "Accessories"
+        ]
+
+        # Path to the folder containing attribute folders
+        self.base_path = "H:/Character-Designer/Attributes"
+
+        self.attribute_folders = {attr: os.path.join(self.base_path, attr) for attr in self.attributes}
+        self.attribute_files = {attr: os.listdir(folder) for attr, folder in self.attribute_folders.items()}
+        self.attribute_indexes = {attr: 0 for attr in self.attributes}
+
+        #controlbuttons
+        control_layout = QHBoxLayout()
+
+        # Previous button
+        prev_button = QPushButton("Previous", self)
+        prev_button.clicked.connect(self.previous_attribute)
+        control_layout.addWidget(prev_button)
+
+        # Attribute dropdown
+        self.attribute_dropdown = QComboBox()
+        self.attribute_dropdown.addItems(self.attributes)
+        control_layout.addWidget(self.attribute_dropdown)
+
+        # Next button
+        next_button = QPushButton("Next", self)
+        next_button.clicked.connect(self.next_attribute)
+        control_layout.addWidget(next_button)
+
+        layout.addLayout(control_layout)
+
+        central_widget = QWidget()
+        central_widget.setLayout(layout)
+        self.setCentralWidget(central_widget)
+
+        self.update_image()
+
+    def update_image(self):
+        pixmap = QPixmap()
+
+        for attr in self.attributes:
+            image_path = os.path.join(self.attribute_folders[attr], self.attribute_files[attr][self.attribute_indexes[attr]])
+            img = QImageReader(image_path)
+            pixmap_img = QPixmap.fromImageReader(img)
+
+            if pixmap.isNull():
+                pixmap = pixmap_img
+            else:
+                pixmap = pixmap_img.scaled(pixmap.width(), pixmap.height(), transformMode=0)
+                painter = QPainter(pixmap)
+                painter.drawPixmap(0, 0, pixmap_img)
+                painter.end()
+
+        self.image_label.setPixmap(pixmap)
+
+    def get_selected_attribute(self):
+        return self.attribute_dropdown.currentText()
+
+    def previous_attribute(self):
+        attribute = self.get_selected_attribute()
+        self.attribute_indexes[attribute] -= 1
+
+        if self.attribute_indexes[attribute] < 0:
+            self.attribute_indexes[attribute] = len(self.attribute_files[attribute]) - 1
+
+        self.update_image()
+
+    def next_attribute(self):
+        attribute = self.get_selected_attribute()
+        self.attribute_indexes[attribute] += 1
+
+        if self.attribute_indexes[attribute] >= len(self.attribute_files[attribute]):
+            self.attribute_indexes[attribute] = 0
+
+        self.update_image()
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = CharacterDesigner()
+    window.show()
+    sys.exit(app.exec_())

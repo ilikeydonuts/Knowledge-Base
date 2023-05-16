@@ -1,0 +1,40 @@
+import streamlit as st
+from PIL import Image
+from psd_tools import PSDImage, Layer
+import os
+
+def load_assets():
+    assets = {}
+    for category in os.listdir('assets'):
+        assets[category] = [Image.open(os.path.join('assets', category, img)) for img in os.listdir(os.path.join('assets', category))]
+    return assets
+
+def preview_character(selections, assets):
+    base_image = Image.new("RGBA", (500, 500), (0, 0, 0, 0))
+    for category, option in selections.items():
+        index = int(option.split('_')[1])
+        base_image.alpha_composite(assets[category][index])
+    return base_image
+
+def export_character(selections, assets, filename):
+    psd = PSDImage.blank((500, 500))
+    for category, option in selections.items():
+        index = int(option.split('_')[1])
+        layer = Layer.from_PIL(assets[category][index], name=option)
+        psd.append_layer(layer)
+    psd.save(filename)
+
+st.title("2D Cartoon Character Creator")
+assets = load_assets()
+selections = {}
+for category, images in assets.items():
+    st.subheader(category.capitalize())
+    options = [f"{category}_{i}" for i in range(len(images))]
+    selections[category] = st.selectbox("Choose an option:", options)
+
+preview = preview_character(selections, assets)
+st.image(preview, caption="Character Preview")
+
+if st.button("Export as PSD"):
+    export_character(selections, assets, "output.psd")
+    st.success("Character exported as output.psd")

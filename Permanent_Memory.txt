@@ -1,0 +1,60 @@
+Refer to "Instructions.txt" for your job requirements; this is necessary and important for you to understand your role in effectively making progress towards the goal outlined below.
+
+Title: 2D Cartoon Character Creator Project
+
+Introduction:
+This document provides an overview of the 2D Cartoon Character Creator project, which aims to develop a Python-based application using Streamlit, Pillow, and psd_tools libraries. The application allows users to dynamically generate and edit 2D cartoon characters using a library of pre-existing PNG assets. The project also includes plans for advanced features to enhance the user experience and improve the workflow for 2D animation.
+
+Progress So Far:
+Our current project's File Directory looks like this:
+├── Character-Designer/
+│   ├── Attributes/
+│   │   ├── Accessories/
+│   │   ├── Arms/
+│   │   ├── Brows/
+│   │   ├── Ears/
+│   │   ├── Eye-Iris/
+│   │   ├── Eye-White/
+│   │   ├── Face/
+│   │   ├── Feet/
+│   │   ├── folder-create.py
+│   │   ├── Forearms/
+│   │   ├── FrontHair/
+│   │   ├── fu.py
+│   │   ├── Hands/
+│   │   ├── Hip-Torso/
+│   │   ├── Lower-Leg/
+│   │   ├── Mouth/
+│   │   ├── New Text Document.txt
+│   │   ├── new_file_0
+│   │   ├── Nose/
+│   │   ├── Upper-Leg/
+│   ├── DCC-prototype.py
+│   ├── DCC.py
+│   ├── Existing-actor-extract.py
+│   ├── GPT-KNOWLEDGEBASE/
+│   │   ├── DCC_Python_Script.txt
+│   │   ├── Instructions.txt
+│   │   ├── Permanent_Memory.txt
+
+
+
+Set up the development environment, including installing Python, a code editor, and required libraries.
+Organized the PNG assets into a folder structure based on their categories (e.g., head, neck, torso, etc.).
+Developed a Streamlit app following step-by-step instructions, including loading assets, creating a user-friendly GUI, previewing the character, and exporting the character as a PSD file with layers.
+Implemented the "Customizable Body Part Templates" feature, allowing users to create and import their own body part templates and modify existing ones.
+Future Work:
+
+Improve the app's performance and user experience by optimizing performance, enhancing the user interface, and regularly testing the app with real users.
+Add advanced features, such as animation support, collaboration features, and integration with external tools.
+Test the app thoroughly on various devices and browsers.
+Deploy the app using Streamlit Community Cloud or another suitable platform.
+Create comprehensive documentation, including user guides, API references, and tutorials.
+Gather user feedback and iterate on the app based on the feedback.
+Knowledge Base Updates:
+
+Add a summary of the project's progress, including the development environment setup, asset organization, and Streamlit app implementation.
+Include information on the "Customizable Body Part Templates" feature and its implementation.
+Document plans for future work, including performance improvements, advanced features, testing, deployment, documentation, and user feedback.
+You will refer to "DCC_Python_Script.txt" is your initialization reference.  This is only to see our starting point for the work ahead.  Once we start making changes to the script, you must know that this file does not update as we make progress, so be sure to keep track of our conversation for any further reference to what the script looks like at a given point in time, rather than referring to the initialization reference each time.  This goes for any adjustments we make to the "Permanent_memory.txt" file as well, with the reason being simply that the knowledge base can not be updated in the middle of a conversation -- only after.  While this is true for all documents within your knowledgebase, there are documents you should repeatedly reference that will reliably stay accurate in a static state, such as README's, documentation for apps, and "instructions.txt".   "DCC-prototype.txt" and "Existing-actor-extract.txt" are nothing more than my first attempt at making the app and it's counterpart with no AI intervention, which may help you see more clearly as to what my goals are.  Neither of those scripts is reliably functional, however.
+

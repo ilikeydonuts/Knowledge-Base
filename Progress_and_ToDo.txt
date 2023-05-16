@@ -1,0 +1,22 @@
+
+###Progress So Far:
+
+Set up the development environment, including installing Python, a code editor, and required libraries.
+Organized the PNG assets into a folder structure based on their categories (e.g., head, neck, torso, etc.).
+Developed a Streamlit app following step-by-step instructions, including loading assets, creating a user-friendly GUI, previewing the character, and exporting the character as a PSD file with layers.
+Implemented the "Customizable Body Part Templates" feature, allowing users to create and import their own body part templates and modify existing ones.
+###TO DO:
+1. The exported project files must be formatted for Krita, as they will be opened and edited in Krita instead of Photoshop.  Read up on Krita through the Krita.txt provided.
+2. Find and apply the correct code for implementing it into our code, which you can find in your DCC_Python_Script.txt.  Apply the code to our existing layout and give the full, complete finished version of the code.
+3. Improve the app's performance and user experience by optimizing performance, enhancing the user interface, and regularly testing the app with real users.
+4. Add advanced features, such as animation support, collaboration features, and integration with external tools.
+5. Test the app thoroughly on various devices and browsers.
+6. Deploy the app using Streamlit Community Cloud or another suitable platform.
+7. Create comprehensive documentation, including user guides, API references, and tutorials.
+8. Gather user feedback and iterate on the app based on the feedback.
+###
+REMINDER:
+Add a summary of the project's progress, including the development environment setup, asset organization, and Streamlit app implementation.
+Include information on the "Customizable Body Part Templates" feature and its implementation.
+Document plans for future work, including performance improvements, advanced features, testing, deployment, documentation, and user feedback.
+Update the knowledge base regularly to reflect changes in the app and ensure that it remains accurate and helpful for future iterations of the project.
